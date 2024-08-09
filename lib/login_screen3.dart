@@ -1,31 +1,19 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SignInScreen(),
-    );
-  }
-}
-
 class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Logo
-              Container(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Logo
+            Padding(
+              padding: const EdgeInsets.only(top: 100.0),
+              child: Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -37,20 +25,24 @@ class SignInScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 20),
-
-              // Sign In text
-              Text(
+            ),
+            // Sign In text
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text(
                 'Sign In',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
+            ),
+            SizedBox(height: 16),
 
-              // Email TextField
-              TextField(
+            // Email TextField
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: TextField(
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   filled: true,
@@ -60,14 +52,16 @@ class SignInScreen extends StatelessWidget {
                   hintStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
-
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+            ),
+            SizedBox(height: 16),
 
-              // Password TextField
-              TextField(
+            // Password TextField
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: TextField(
                 cursorColor: Colors.white,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -83,147 +77,148 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+            ),
+            SizedBox(height: 8),
 
-              // Forgot Password text
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot Password?',
-                  style: TextStyle(
-                    color: Color(0xFF4C44CD),
-                    fontWeight: FontWeight.bold,
-                  ),
+            // Forgot Password text
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'Forgot Password?',
+                style: TextStyle(
+                  color: Color(0xFF4C44CD),
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 16),
+            ),
+            SizedBox(height: 16),
 
-              // Login Button
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'LOGIN',
-                  style: TextStyle(
-                      color: Color(0xFF4C44CD), fontWeight: FontWeight.bold),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFB6B0F5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                ),
+            // Login Button
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'LOGIN',
+                style: TextStyle(
+                    color: Color(0xFF4C44CD), fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFB6B0F5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+            ),
+            SizedBox(height: 16),
 
-              // Or text
-              Row(
-                children: [
-                  Expanded(child: Divider()),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'or',
-                      style: TextStyle(color: Colors.black54),
+            // Or text
+            Row(
+              children: [
+                Expanded(child: Divider()),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'or',
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                ),
+                Expanded(child: Divider()),
+              ],
+            ),
+
+            SizedBox(height: 16),
+
+            // Social Media Buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 8,
+                        offset: Offset(0, 0),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.grey[200],
+                    child: IconButton(
+                      icon: Icon(Icons.facebook, color: Colors.blue),
+                      onPressed: () {},
                     ),
                   ),
-                  Expanded(child: Divider()),
-                ],
-              ),
+                ),
+                SizedBox(width: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 8,
+                        offset: Offset(0, 0),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.grey[200],
+                    child: IconButton(
+                      icon: Icon(Icons.person, color: Colors.red),
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 8,
+                        offset: Offset(0, 0),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.grey[200],
+                    child: IconButton(
+                      icon: Icon(Icons.account_box_sharp,
+                          color: Colors.lightBlue),
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
 
-              SizedBox(height: 16),
-
-              // Social Media Buttons
-              Row(
+            // Register text
+            GestureDetector(
+              onTap: () {},
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey[200],
-                      child: IconButton(
-                        icon: Icon(Icons.facebook, color: Colors.blue),
-                        onPressed: () {},
-                      ),
+                  Text(
+                    'Register now using',
+                    style: TextStyle(
+                      color: Colors.grey,
                     ),
                   ),
-                  SizedBox(width: 16),
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey[200],
-                      child: IconButton(
-                        icon: Icon(Icons.person, color: Colors.red),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 8,
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey[200],
-                      child: IconButton(
-                        icon: Icon(Icons.account_box_sharp, color: Colors.lightBlue),
-                        onPressed: () {},
-                      ),
+                  Text(
+                    'Email',
+                    style: TextStyle(
+                      color: Color(0xFF4C44CD),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-
-              // Register text
-              GestureDetector(
-                onTap: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Register now using',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Text(
-                      'Email',
-                      style: TextStyle(
-                        color: Color(0xFF4C44CD),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
